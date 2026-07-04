@@ -1,0 +1,97 @@
+<!-- ===================== config node ===================== -->
+<script type="text/javascript">
+  RED.nodes.registerType('dab-pumps-config', {
+    category: 'config',
+    defaults: {
+      name: { value: '' },
+      host: { value: 'https://dconnect.dabpumps.com', required: true }
+    },
+    credentials: {
+      username: { type: 'text' },
+      password: { type: 'password' }
+    },
+    label: function () {
+      return this.name || (this.credentials && this.credentials.username) || 'DAB Pumps account';
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="dab-pumps-config">
+  <div class="form-row">
+    <label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-config-input-name" placeholder="DAB Pumps account">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-username"><i class="fa fa-user"></i> Email</label>
+    <input type="text" id="node-config-input-username" placeholder="dedicated-account@example.com">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-password"><i class="fa fa-lock"></i> Password</label>
+    <input type="password" id="node-config-input-password">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-host"><i class="fa fa-globe"></i> Host</label>
+    <input type="text" id="node-config-input-host" placeholder="https://dconnect.dabpumps.com">
+  </div>
+  <div class="form-tips">
+    Use a <b>separate</b> DAB Pumps account for Node-RED. Credentials are stored encrypted by Node-RED.
+  </div>
+</script>
+
+<!-- ===================== poll/control node ===================== -->
+<script type="text/javascript">
+  RED.nodes.registerType('dab-pumps', {
+    category: 'network',
+    color: '#3FADB5',
+    defaults: {
+      name: { value: '' },
+      account: { value: '', type: 'dab-pumps-config', required: true },
+      interval: { value: 300, validate: RED.validators.number() },
+      output: { value: 'per-device' }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'font-awesome/fa-tint',
+    label: function () {
+      return this.name || 'DAB Pumps';
+    },
+    paletteLabel: 'DAB Pumps'
+  });
+</script>
+
+<script type="text/html" data-template-name="dab-pumps">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="DAB Pumps">
+  </div>
+  <div class="form-row">
+    <label for="node-input-account"><i class="fa fa-id-card-o"></i> Account</label>
+    <input type="text" id="node-input-account">
+  </div>
+  <div class="form-row">
+    <label for="node-input-interval"><i class="fa fa-clock-o"></i> Poll every</label>
+    <input type="number" id="node-input-interval" style="width:100px" min="0"> seconds
+    <span style="color:#888">(0 = only on input)</span>
+  </div>
+  <div class="form-row">
+    <label for="node-input-output"><i class="fa fa-sign-out"></i> Output</label>
+    <select id="node-input-output" style="width:70%">
+      <option value="per-device">One message per device</option>
+      <option value="combined">Single message, all devices</option>
+    </select>
+  </div>
+</script>
+
+<script type="text/html" data-help-name="dab-pumps">
+  <p>Polls the DAB Pumps cloud and outputs live device status. Send a message with <code>msg.command = 'write'</code> to write a parameter to a device.</p>
+
+  <h3>Write message fields</h3>
+  <ul>
+    <li><code>msg.payload.serial</code> or <code>msg.serial</code>: device serial number</li>
+    <li><code>msg.payload.key</code> or <code>msg.key</code>: parameter key</li>
+    <li><code>msg.payload.code</code> or <code>msg.code</code>: backend code value</li>
+    <li><code>msg.payload.value</code> or <code>msg.value</code>: human-readable value (if the backend code is not known)</li>
+  </ul>
+
+  <p>Examples: <code>{ command: 'write', serial: '12345', key: 'PumpDisable', code: '1' }</code> or <code>{ command: 'write', payload: { serial: '12345', key: 'PressureSetpoint', value: 24 } }</code>.</p>
+</script>

@@ -27,6 +27,7 @@
   "files": [
     "dab-pumps.js",
     "dab-pumps.html",
+    "lib/**/*.js",
     "README.md",
     "LICENSE"
   ],

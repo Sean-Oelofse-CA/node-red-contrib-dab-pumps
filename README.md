@@ -4,6 +4,8 @@ Node-RED nodes for DAB Pumps using the DConnect / DAB Live cloud API.
 
 This package provides Node-RED nodes for DAB Pump devices such as EsyBox, EsyBox Mini/Max, and DConnect Box.
 
+The node can poll live status from the DAB cloud and also send simple write commands to a selected device when you pass a message with `msg.command = "write"`.
+
 ## Install in Node-RED
 
 ### From the Node-RED palette manager
