@@ -32,10 +32,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YOUR_USERNAME/node-red-contrib-dab-pumps.git"
+    "url": "git+https://github.com/Sean-Oelofse-CA/node-red-contrib-dab-pumps.git"
   },
   "bugs": {
-    "url": "https://github.com/YOUR_USERNAME/node-red-contrib-dab-pumps/issues"
+    "url": "https://github.com/Sean-Oelofse-CA/node-red-contrib-dab-pumps/issues"
   },
-  "homepage": "https://github.com/YOUR_USERNAME/node-red-contrib-dab-pumps#readme"
+  "homepage": "https://github.com/Sean-Oelofse-CA/node-red-contrib-dab-pumps#readme"
 }
