@@ -1,0 +1,41 @@
+{
+  "name": "node-red-contrib-dab-pumps",
+  "version": "0.1.0",
+  "description": "Node-RED nodes for DAB Pumps via the DConnect / DAB Live cloud API (EsyBox, EsyBox Mini/Max, DConnect Box).",
+  "keywords": [
+    "node-red",
+    "dab",
+    "dabpumps",
+    "dconnect",
+    "dab-live",
+    "esybox",
+    "pump",
+    "home-assistant"
+  ],
+  "license": "MIT",
+  "author": "ported from ankohanse/hass-dab-pumps",
+  "engines": {
+    "node": ">=18"
+  },
+  "node-red": {
+    "version": ">=3.0.0",
+    "nodes": {
+      "dab-pumps": "dab-pumps.js"
+    }
+  },
+  "dependencies": {},
+  "files": [
+    "dab-pumps.js",
+    "dab-pumps.html",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YOUR_USERNAME/node-red-contrib-dab-pumps.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/node-red-contrib-dab-pumps/issues"
+  },
+  "homepage": "https://github.com/YOUR_USERNAME/node-red-contrib-dab-pumps#readme"
+}
